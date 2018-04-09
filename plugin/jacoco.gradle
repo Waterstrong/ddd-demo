@@ -1,0 +1,48 @@
+apply plugin: 'jacoco'
+
+jacocoTestReport {
+    group = "Reporting"
+    description = "Generate Jacoco coverage reports after running tests."
+    reports {
+        html.enabled true
+        xml.enabled true
+        csv.enabled false
+    }
+    afterEvaluate {
+        classDirectories = files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                    '**/*Application',
+                    '**/configuration/**',
+                    '**/exception/**',
+                    '**/utils/**',
+                    '**/repository/**'
+            ])
+        })
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element "BUNDLE"
+
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.20
+            }
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.20
+            }
+        }
+    }
+}
+
+check.dependsOn jacocoTestCoverageVerification
+jacocoTestCoverageVerification.dependsOn jacocoTestReport
+tasks.withType(Test) { test ->
+    jacocoTestReport.dependsOn test
+}
