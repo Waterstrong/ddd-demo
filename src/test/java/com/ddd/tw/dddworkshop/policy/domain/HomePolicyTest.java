@@ -2,12 +2,13 @@ package com.ddd.tw.dddworkshop.policy.domain;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
+import com.ddd.tw.dddworkshop.exception.InvalidQuotationException;
 
-public class HomePolicyTest {
+public class HomePolicyTest extends PolicyTest {
     @Test
     public void shouldCalculateQuoteGivenHomePolicyInformation() {
         HomePolicy homePolicy = new HomePolicy("钢材", "公寓", "三室及以上", "");
@@ -33,11 +34,14 @@ public class HomePolicyTest {
     }
 
     @Test
-    public void shouldCalculateQuoteReturnsNullGivenHomePolicyInformationAsUnknown() {
+    public void shouldCalculateQuoteThrowsExceptionGivenHomePolicyInformationAsUnknown() {
         HomePolicy homePolicy = new HomePolicy("UNKNOWN", "UNKNOWN", "UNKNOWN", "");
 
-        Quotation quotation = homePolicy.calculateQuote();
-
-        assertThat(quotation, is(nullValue()));
+        try {
+            homePolicy.calculateQuote();
+            fail();
+        } catch (InvalidQuotationException e) {
+            assertInvalidQuotationException(e);
+        }
     }
 }

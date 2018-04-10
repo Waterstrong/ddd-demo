@@ -2,14 +2,14 @@ package com.ddd.tw.dddworkshop.policy.application;
 
 import static com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand.builder;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
+import com.ddd.tw.dddworkshop.exception.InvalidQuotationException;
 import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
 import com.ddd.tw.dddworkshop.policy.domain.Quotation;
 
@@ -19,7 +19,6 @@ public class CarPolicyApplicationServiceTest {
     private CarPolicyApplicationService service;
 
     @Test
-    @Ignore
     public void shouldCalculateQuoteGivenCarPolicyInformation() {
         CarPolicyCommand carPolicyCommand = builder()
                 .yearOfMake("2010-2014")
@@ -31,17 +30,15 @@ public class CarPolicyApplicationServiceTest {
 
         Quotation quotation = service.calculateQuote(carPolicyCommand);
 
-        assertThat(quotation.getQuoteId(), is(nullValue()));
+        assertThat(quotation.getQuoteId(), is(notNullValue()));
         assertThat(quotation.getPremium(), is(276.48));
     }
 
-    @Test
-    public void shouldCalculateQuoteReturnsNullGivenCarPolicyCommandAsEmpty() {
+    @Test(expected = InvalidQuotationException.class)
+    public void shouldCalculateQuoteThrowsExceptionGivenCarPolicyCommandAsEmpty() {
         CarPolicyCommand carPolicyCommand = builder().build();
 
-        Quotation quotation = service.calculateQuote(carPolicyCommand);
-
-        assertThat(quotation, is(nullValue()));
+        service.calculateQuote(carPolicyCommand);
     }
 
 

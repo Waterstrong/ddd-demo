@@ -2,14 +2,14 @@ package com.ddd.tw.dddworkshop.policy.application;
 
 import static com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand.builder;
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.MockitoJUnitRunner;
+import com.ddd.tw.dddworkshop.exception.InvalidQuotationException;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
 import com.ddd.tw.dddworkshop.policy.domain.Quotation;
 
@@ -19,7 +19,6 @@ public class HomePolicyApplicationServiceTest {
     private HomePolicyApplicationService service;
 
     @Test
-    @Ignore
     public void shouldCalculateQuoteGivenHomePolicyInformation() {
         HomePolicyCommand homePolicyCommand = builder()
                 .constructionMaterial("钢材")
@@ -29,17 +28,15 @@ public class HomePolicyApplicationServiceTest {
 
         Quotation quotation = service.calculateQuote(homePolicyCommand);
 
-        assertThat(quotation.getQuoteId(), is(nullValue()));
-        assertThat(quotation.getPremium(), is(171.6));
+        assertThat(quotation.getQuoteId(), is(notNullValue()));
+        assertThat(quotation.getPremium(), is(171.60));
     }
 
-    @Test
+    @Test(expected = InvalidQuotationException.class)
     public void shouldCalculateQuoteReturnsNullGivenHomePolicyCommandAsEmpty() {
         HomePolicyCommand homePolicyCommand = builder().build();
 
-        Quotation quotation = service.calculateQuote(homePolicyCommand);
-
-        assertThat(quotation, is(nullValue()));
+        service.calculateQuote(homePolicyCommand);
     }
 
 }
