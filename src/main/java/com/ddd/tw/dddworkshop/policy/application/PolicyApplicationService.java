@@ -1,16 +1,9 @@
 package com.ddd.tw.dddworkshop.policy.application;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.ddd.tw.dddworkshop.policy.domain.PolicyHolder;
+import com.ddd.tw.dddworkshop.policy.domain.Quotation;
 
-@Service
-public class PolicyApplicationService {
-    public double calculateQuote() {
-        return 0;
-    }
-
-    @Transactional
-    public boolean confirmPolicy() {
-        return false;
-    }
+public interface PolicyApplicationService<T> {
+    Quotation calculateQuote(T policyCommand);
+    String generatePolicy(T policyCommand, PolicyHolder policyHolder);
 }
