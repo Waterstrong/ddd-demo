@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.policy.domain;
+package com.ddd.tw.dddworkshop.quote.domain;
 
 import java.util.UUID;
 

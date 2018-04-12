@@ -5,7 +5,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.ddd.tw.dddworkshop.policy.application.PolicyApplicationService;
+import com.ddd.tw.dddworkshop.policy.PolicyApplicationService;
 import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
 

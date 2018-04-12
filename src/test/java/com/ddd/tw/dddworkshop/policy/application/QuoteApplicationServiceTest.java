@@ -9,10 +9,11 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import com.ddd.tw.dddworkshop.policy.domain.CarDetails;
-import com.ddd.tw.dddworkshop.policy.domain.HomeDetails;
-import com.ddd.tw.dddworkshop.policy.domain.Quotation;
+import com.ddd.tw.dddworkshop.quote.domain.CarDetails;
+import com.ddd.tw.dddworkshop.quote.domain.HomeDetails;
+import com.ddd.tw.dddworkshop.quote.domain.Quotation;
 import com.ddd.tw.dddworkshop.policy.service.QuoteService;
+import com.ddd.tw.dddworkshop.quote.QuoteApplicationService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class QuoteApplicationServiceTest {

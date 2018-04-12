@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.policy.application;
+package com.ddd.tw.dddworkshop.policy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

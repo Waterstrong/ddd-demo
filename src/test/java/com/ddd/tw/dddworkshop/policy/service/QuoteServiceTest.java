@@ -14,10 +14,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import com.ddd.tw.dddworkshop.exception.InvalidQuotationException;
-import com.ddd.tw.dddworkshop.policy.domain.CarDetails;
-import com.ddd.tw.dddworkshop.policy.domain.HomeDetails;
-import com.ddd.tw.dddworkshop.policy.domain.Quotation;
-import com.ddd.tw.dddworkshop.policy.repository.QuoteRateRepository;
+import com.ddd.tw.dddworkshop.quote.domain.CarDetails;
+import com.ddd.tw.dddworkshop.quote.domain.HomeDetails;
+import com.ddd.tw.dddworkshop.quote.domain.Quotation;
+import com.ddd.tw.dddworkshop.quote.repository.QuoteRateRepository;
 
 @RunWith(MockitoJUnitRunner.class)
 public class QuoteServiceTest {

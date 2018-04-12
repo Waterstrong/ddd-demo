@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.webapi.policy;
+package com.ddd.tw.dddworkshop.webapi.quote;
 
 import static org.springframework.http.HttpStatus.OK;
 
@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.ddd.tw.dddworkshop.policy.application.QuoteApplicationService;
-import com.ddd.tw.dddworkshop.policy.domain.CarDetails;
-import com.ddd.tw.dddworkshop.policy.domain.HomeDetails;
-import com.ddd.tw.dddworkshop.policy.domain.Quotation;
+import com.ddd.tw.dddworkshop.quote.QuoteApplicationService;
+import com.ddd.tw.dddworkshop.quote.domain.CarDetails;
+import com.ddd.tw.dddworkshop.quote.domain.HomeDetails;
+import com.ddd.tw.dddworkshop.quote.domain.Quotation;
 
 @RestController
 public class QuoteController {

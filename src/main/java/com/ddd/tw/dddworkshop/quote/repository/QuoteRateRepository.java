@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.policy.repository;
+package com.ddd.tw.dddworkshop.quote.repository;
 
 import java.util.HashMap;
 import java.util.Map;

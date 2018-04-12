@@ -8,10 +8,10 @@ import java.text.DecimalFormat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ddd.tw.dddworkshop.exception.InvalidQuotationException;
-import com.ddd.tw.dddworkshop.policy.domain.CarDetails;
-import com.ddd.tw.dddworkshop.policy.domain.HomeDetails;
-import com.ddd.tw.dddworkshop.policy.domain.Quotation;
-import com.ddd.tw.dddworkshop.policy.repository.QuoteRateRepository;
+import com.ddd.tw.dddworkshop.quote.domain.CarDetails;
+import com.ddd.tw.dddworkshop.quote.domain.HomeDetails;
+import com.ddd.tw.dddworkshop.quote.domain.Quotation;
+import com.ddd.tw.dddworkshop.quote.repository.QuoteRateRepository;
 
 @Service
 public class QuoteService {
