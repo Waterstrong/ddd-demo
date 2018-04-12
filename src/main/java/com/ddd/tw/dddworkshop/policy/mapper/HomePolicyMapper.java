@@ -13,8 +13,6 @@ public interface HomePolicyMapper {
     HomePolicyMapper INSTANCE = getMapper(HomePolicyMapper.class);
 
     @Mappings({
-            @Mapping(source = "quoteId", target = "quotation.quoteId"),
-            @Mapping(source = "quotePremium", target = "quotation.premium"),
             @Mapping(target = "policyNumber", ignore = true),
             @Mapping(target = "policyHolder", ignore = true)
     })

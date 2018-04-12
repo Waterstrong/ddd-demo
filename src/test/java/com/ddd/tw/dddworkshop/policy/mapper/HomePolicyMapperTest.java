@@ -29,8 +29,7 @@ public class HomePolicyMapperTest {
 
         assertThat(homePolicy.getPolicyNumber(), is(nullValue()));
         assertThat(homePolicy.getPolicyStartDate(), is("2018-04-10"));
-        assertThat(homePolicy.getQuotation().getQuoteId(), is("123456"));
-        assertThat(homePolicy.getQuotation().getPremium(), is(1024.0));
+        assertThat(homePolicy.getQuoteId(), is("123456"));
         assertThat(homePolicy.getPolicyHolder(), is(nullValue()));
         assertThat(homePolicy.getConstructionMaterial(), is("钢材"));
         assertThat(homePolicy.getBuildingType(), is("别墅"));

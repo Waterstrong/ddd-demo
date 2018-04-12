@@ -27,8 +27,7 @@ public class CarPolicyMapperTest {
 
         assertThat(carPolicy.getPolicyStartDate(), is("2018-04-10"));
         assertThat(carPolicy.getPolicyNumber(), is(nullValue()));
-        assertThat(carPolicy.getQuotation().getQuoteId(), is("123456"));
-        assertThat(carPolicy.getQuotation().getPremium(), is(1024.0));
+        assertThat(carPolicy.getQuoteId(), is("123456"));
         assertThat(carPolicy.getYearOfMake(), is("2010-2014"));
         assertThat(carPolicy.getBrand(), is("BMW"));
         assertThat(carPolicy.getModel(), is("C650"));

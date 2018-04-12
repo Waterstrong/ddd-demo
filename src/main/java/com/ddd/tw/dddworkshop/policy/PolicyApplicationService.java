@@ -2,6 +2,7 @@ package com.ddd.tw.dddworkshop.policy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
 import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
@@ -11,6 +12,7 @@ import com.ddd.tw.dddworkshop.policy.mapper.HomePolicyMapper;
 import com.ddd.tw.dddworkshop.policy.repository.PolicyRepository;
 
 @Service
+@Transactional
 public class PolicyApplicationService {
     @Autowired
     private PolicyRepository policyRepository;

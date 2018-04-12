@@ -13,8 +13,6 @@ public interface CarPolicyMapper {
     CarPolicyMapper INSTANCE = getMapper(CarPolicyMapper.class);
 
     @Mappings({
-            @Mapping(source = "quoteId", target = "quotation.quoteId"),
-            @Mapping(source = "quotePremium", target = "quotation.premium"),
             @Mapping(source = "driverDateOfBirth", target = "driverDetail.dateOfBirth"),
             @Mapping(source = "driverGender", target = "driverDetail.gender"),
             @Mapping(target = "policyNumber", ignore = true),
