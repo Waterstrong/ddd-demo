@@ -8,7 +8,7 @@ import org.mapstruct.Mappings;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
 import com.ddd.tw.dddworkshop.policy.domain.HomePolicy;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface HomePolicyMapper {
     HomePolicyMapper INSTANCE = getMapper(HomePolicyMapper.class);
 

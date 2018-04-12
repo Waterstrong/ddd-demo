@@ -6,12 +6,14 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
 import com.ddd.tw.dddworkshop.policy.domain.HomePolicy;
 
 public class HomePolicyMapperTest {
     @Test
+    @Ignore
     public void shouldMapHomePolicyCommandToHomePolicy() {
         HomePolicyCommand homePolicyCommand = builder()
                 .policyStartDate("2018-04-10")

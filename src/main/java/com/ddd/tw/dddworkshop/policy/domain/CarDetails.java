@@ -1,15 +1,18 @@
 package com.ddd.tw.dddworkshop.policy.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CarPolicy extends Policy {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CarDetails {
     private String yearOfMake;
     private String brand;
     private String model;
     private String parkingAddress;
     private String kilosEachYear;
-    private DriverDetail driverDetail;
 }

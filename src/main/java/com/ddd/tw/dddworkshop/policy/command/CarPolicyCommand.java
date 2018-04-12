@@ -18,4 +18,8 @@ public class CarPolicyCommand {
     private String kilosEachYear;
     private String driverDateOfBirth;
     private String driverGender;
+    private String policyHolderId;
+    private String policyHolderName;
+    private String policyHolderEmail;
+    private String policyHolderDateOfBirth;
 }

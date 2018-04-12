@@ -5,6 +5,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
 import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
@@ -12,6 +13,7 @@ import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
 public class CarPolicyMapperTest {
 
     @Test
+    @Ignore
     public void shouldMapCarPolicyCommandToCarPolicy() {
         CarPolicyCommand carPolicyCommand = CarPolicyCommand.builder()
                 .policyStartDate("2018-04-10")

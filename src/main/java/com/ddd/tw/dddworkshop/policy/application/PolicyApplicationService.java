@@ -1,9 +1,29 @@
 package com.ddd.tw.dddworkshop.policy.application;
 
-import com.ddd.tw.dddworkshop.policy.domain.PolicyHolder;
-import com.ddd.tw.dddworkshop.policy.domain.Quotation;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
+import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
+import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
+import com.ddd.tw.dddworkshop.policy.domain.HomePolicy;
+import com.ddd.tw.dddworkshop.policy.mapper.CarPolicyMapper;
+import com.ddd.tw.dddworkshop.policy.mapper.HomePolicyMapper;
+import com.ddd.tw.dddworkshop.policy.repository.PolicyRepository;
 
-public interface PolicyApplicationService<T> {
-    Quotation calculateQuote(T policyCommand);
-    String generatePolicy(T policyCommand, PolicyHolder policyHolder);
+@Service
+public class PolicyApplicationService {
+    @Autowired
+    private PolicyRepository policyRepository;
+
+    public String generatePolicy(HomePolicyCommand command) {
+        HomePolicy homePolicy = HomePolicyMapper.INSTANCE.mapToHomePolicy(command);
+        policyRepository.save(homePolicy);
+        return homePolicy.getPolicyNumber();
+    }
+
+    public String generatePolicy(CarPolicyCommand command) {
+        CarPolicy carPolicy = CarPolicyMapper.INSTANCE.mapToCarPolicy(command);
+        policyRepository.save(carPolicy);
+        return carPolicy.getPolicyNumber();
+    }
 }

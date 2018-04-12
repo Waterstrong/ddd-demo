@@ -1,13 +1,16 @@
 package com.ddd.tw.dddworkshop.policy.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class HomePolicy extends Policy {
+@NoArgsConstructor
+@AllArgsConstructor
+public class HomeDetails {
     private String constructionMaterial;
     private String buildingType;
     private String bedroomsType;
-    private String address;
 }

@@ -15,4 +15,8 @@ public class HomePolicyCommand {
     private String buildingType;
     private String bedroomsType;
     private String address;
+    private String policyHolderId;
+    private String policyHolderName;
+    private String policyHolderEmail;
+    private String policyHolderDateOfBirth;
 }
