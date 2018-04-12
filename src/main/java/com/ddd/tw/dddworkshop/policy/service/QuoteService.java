@@ -1,6 +1,7 @@
 package com.ddd.tw.dddworkshop.policy.service;
 
 import static java.lang.String.format;
+import static org.springframework.util.ObjectUtils.isEmpty;
 
 import java.text.DecimalFormat;
 
@@ -47,7 +48,7 @@ public class QuoteService {
 
 
     private void checkRateValidState(Double constructionMaterialRate, Double buildingTypeRate, Double bedroomsTypeRate) {
-        if (constructionMaterialRate == null || buildingTypeRate == null || bedroomsTypeRate == null) {
+        if (isEmpty(constructionMaterialRate) || isEmpty(buildingTypeRate) || isEmpty(bedroomsTypeRate)) {
             throw new InvalidQuotationException();
         }
     }
@@ -58,7 +59,7 @@ public class QuoteService {
     }
 
     private void checkRateValidState(Double yearOfMakeRate, Double brandModelRate, Double parkingAddressRate, Double kilosEachYearRate) {
-        if (yearOfMakeRate == null || brandModelRate == null || parkingAddressRate == null || kilosEachYearRate == null) {
+        if (isEmpty(yearOfMakeRate) || isEmpty(brandModelRate) || isEmpty(parkingAddressRate) || isEmpty(kilosEachYearRate)) {
             throw new InvalidQuotationException();
         }
     }
