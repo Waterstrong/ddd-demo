@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.jsonapi.error;
+package com.ddd.tw.dddworkshop.webapi.jsonapi.error;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 

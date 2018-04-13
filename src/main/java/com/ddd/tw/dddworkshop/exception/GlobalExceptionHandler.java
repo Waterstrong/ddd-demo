@@ -6,8 +6,8 @@ import static java.lang.String.valueOf;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import com.ddd.tw.dddworkshop.jsonapi.error.ApiError;
-import com.ddd.tw.dddworkshop.jsonapi.error.ApiErrors;
+import com.ddd.tw.dddworkshop.webapi.jsonapi.error.ApiError;
+import com.ddd.tw.dddworkshop.webapi.jsonapi.error.ApiErrors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

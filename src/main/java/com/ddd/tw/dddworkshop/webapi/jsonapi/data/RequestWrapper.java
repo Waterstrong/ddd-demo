@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.jsonapi.data;
+package com.ddd.tw.dddworkshop.webapi.jsonapi.data;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

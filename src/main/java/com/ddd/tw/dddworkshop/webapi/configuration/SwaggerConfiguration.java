@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.configuration;
+package com.ddd.tw.dddworkshop.webapi.configuration;
 
 import static org.apache.logging.log4j.util.Strings.EMPTY;
 
