@@ -1,7 +1,7 @@
-package com.ddd.tw.dddworkshop.webapi.account;
+package com.ddd.tw.dddworkshop.webapi.user;
 
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class AccountController {
+public class UserController {
 }
