@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.webapi.configuration;
+package com.ddd.tw.dddworkshop.webapi.swagger;
 
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_EMPTY;
 import static com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES;

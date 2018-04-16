@@ -1,11 +1,10 @@
-package com.ddd.tw.dddworkshop.webapi.configuration;
+package com.ddd.tw.dddworkshop.webapi.swagger;
 
 import static org.apache.logging.log4j.util.Strings.EMPTY;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.ddd.tw.dddworkshop.utils.swagger.DocketFactory;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
@@ -38,7 +37,7 @@ public class SwaggerConfiguration {
 
     @Bean
     public Docket createDocket() {
-        return DocketFactory.createDocket(CONTROLLER_PACKAGE, name, apiInfo(), protocol);
+        return SwaggerDocketFactory.createDocket(CONTROLLER_PACKAGE, name, apiInfo(), protocol);
     }
 
     private ApiInfo apiInfo() {

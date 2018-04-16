@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ApiException extends RuntimeException {
+public class DomainException extends RuntimeException {
     private final HttpStatus status;
     private final String code;
     private final String message;

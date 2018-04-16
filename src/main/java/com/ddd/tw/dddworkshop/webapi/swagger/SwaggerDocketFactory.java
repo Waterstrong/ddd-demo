@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.utils.swagger;
+package com.ddd.tw.dddworkshop.webapi.swagger;
 
 import static com.google.common.collect.Sets.newHashSet;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -26,7 +26,7 @@ import springfox.documentation.service.ResponseMessage;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
-public class DocketFactory {
+public class SwaggerDocketFactory {
     private static final int INTERNAL_SERVER_ERROR_CODE = 500;
     private static final String INTERNAL_SERVER_ERROR_MSG = "Internal Server Error";
     private static final String RESPONSE_MODEL_ERROR = "ResponseError";

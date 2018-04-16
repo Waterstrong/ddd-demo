@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.exception;
+package com.ddd.tw.dddworkshop.webapi.jsonapi.error;
 
 import static com.google.common.collect.ImmutableList.of;
 import static java.lang.String.valueOf;
@@ -6,15 +6,14 @@ import static java.lang.String.valueOf;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import com.ddd.tw.dddworkshop.webapi.jsonapi.error.ApiError;
-import com.ddd.tw.dddworkshop.webapi.jsonapi.error.ApiErrors;
+import com.ddd.tw.dddworkshop.exception.DomainException;
 
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class ErrorHandlerAdvice {
     private static final String API_ERROR = "API Error";
 
-    @ExceptionHandler(ApiException.class)
-    public ResponseEntity<?> handleException(ApiException ex) {
+    @ExceptionHandler(DomainException.class)
+    public ResponseEntity<?> handleException(DomainException ex) {
         ApiError apiError = ApiError.builder()
                 .status(valueOf(ex.getStatus())).code(ex.getCode())
                 .title(API_ERROR).detail(ex.getMessage()).build();
