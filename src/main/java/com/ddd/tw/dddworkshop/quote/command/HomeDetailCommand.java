@@ -1,0 +1,17 @@
+package com.ddd.tw.dddworkshop.quote.command;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class HomeDetailCommand {
+    private String constructionMaterial;
+    private String buildingType;
+    private String bedroomsType;
+    private String address;
+}

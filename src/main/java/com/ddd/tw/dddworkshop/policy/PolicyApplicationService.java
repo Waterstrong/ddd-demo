@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
-import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
-import com.ddd.tw.dddworkshop.policy.domain.HomePolicy;
 import com.ddd.tw.dddworkshop.policy.mapper.CarPolicyMapper;
 import com.ddd.tw.dddworkshop.policy.mapper.HomePolicyMapper;
+import com.ddd.tw.dddworkshop.policy.model.CarPolicy;
+import com.ddd.tw.dddworkshop.policy.model.HomePolicy;
 import com.ddd.tw.dddworkshop.policy.repository.PolicyRepository;
 
 @Service

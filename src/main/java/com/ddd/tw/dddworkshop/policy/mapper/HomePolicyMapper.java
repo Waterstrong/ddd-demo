@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import com.ddd.tw.dddworkshop.policy.command.HomePolicyCommand;
-import com.ddd.tw.dddworkshop.policy.domain.HomePolicy;
+import com.ddd.tw.dddworkshop.policy.model.HomePolicy;
 
 @Mapper(componentModel = "spring")
 public interface HomePolicyMapper {

@@ -1,8 +1,8 @@
 package com.ddd.tw.dddworkshop.policy.repository;
 
 import org.springframework.stereotype.Repository;
-import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
-import com.ddd.tw.dddworkshop.policy.domain.HomePolicy;
+import com.ddd.tw.dddworkshop.policy.model.CarPolicy;
+import com.ddd.tw.dddworkshop.policy.model.HomePolicy;
 
 @Repository
 public class PolicyRepository {

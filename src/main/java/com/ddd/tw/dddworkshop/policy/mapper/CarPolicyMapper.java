@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import com.ddd.tw.dddworkshop.policy.command.CarPolicyCommand;
-import com.ddd.tw.dddworkshop.policy.domain.CarPolicy;
+import com.ddd.tw.dddworkshop.policy.model.CarPolicy;
 
 @Mapper
 public interface CarPolicyMapper {

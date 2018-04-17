@@ -2,10 +2,14 @@ package com.ddd.tw.dddworkshop.quote;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ddd.tw.dddworkshop.policy.service.QuoteService;
-import com.ddd.tw.dddworkshop.quote.domain.CarDetails;
-import com.ddd.tw.dddworkshop.quote.domain.HomeDetails;
-import com.ddd.tw.dddworkshop.quote.domain.Quotation;
+import com.ddd.tw.dddworkshop.quote.command.CarDetailCommand;
+import com.ddd.tw.dddworkshop.quote.command.HomeDetailCommand;
+import com.ddd.tw.dddworkshop.quote.model.CarPolicyQuote;
+import com.ddd.tw.dddworkshop.quote.model.HomePolicyQuote;
+import com.ddd.tw.dddworkshop.quote.model.PolicyQuote;
+import com.ddd.tw.dddworkshop.quote.repository.CarPolicyQuoteRepository;
+import com.ddd.tw.dddworkshop.quote.repository.HomePolicyQuoteRepository;
+import com.ddd.tw.dddworkshop.quote.service.QuoteService;
 
 @Service
 public class QuoteApplicationService {
@@ -13,11 +17,25 @@ public class QuoteApplicationService {
     @Autowired
     private QuoteService quoteService;
 
-    public Quotation calculateQuote(HomeDetails homeDetails) {
-        return quoteService.calculateQuote(homeDetails);
+    @Autowired
+    private CarPolicyQuoteRepository carPolicyQuoteRepository;
+
+    @Autowired
+    private HomePolicyQuoteRepository homePolicyQuoteRepository;
+
+    public PolicyQuote generateQuote(HomeDetailCommand homeDetail) {
+        HomePolicyQuote homePolicyQuote = quoteService.generateHomePolicyQuote(homeDetail);
+
+        homePolicyQuoteRepository.save(homePolicyQuote);
+
+        return homePolicyQuote;
     }
 
-    public Quotation calculateQuote(CarDetails carDetails) {
-        return quoteService.calculateQuote(carDetails);
+    public PolicyQuote generateQuote(CarDetailCommand carDetailCommand) {
+        CarPolicyQuote carPolicyQuote = quoteService.generateCarPolicyQuote(carDetailCommand);
+
+        carPolicyQuoteRepository.save(carPolicyQuote);
+
+        return carPolicyQuote;
     }
 }
