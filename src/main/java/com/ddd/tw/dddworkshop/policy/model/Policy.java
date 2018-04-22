@@ -7,9 +7,9 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class Policy {
+public class Policy {
     private String policyNumber = UUID.randomUUID().toString();
     private String policyStartDate;
     private String quoteId;
-    private PolicyHolder policyHolder;
+    private HolderDetail holderDetail;
 }

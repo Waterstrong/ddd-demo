@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.policy.model;
+package com.ddd.tw.dddworkshop.quote.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -16,11 +16,10 @@ import com.ddd.tw.dddworkshop.quote.model.PolicyQuote;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping(value = "/quote", consumes = CONTENT_TYPE, produces = CONTENT_TYPE)
-@Api(tags = "Quote", description = "Policy Quote", consumes = CONTENT_TYPE, produces = CONTENT_TYPE)
+@Api(tags = "Quote", description = "Quote Resource", consumes = CONTENT_TYPE, produces = CONTENT_TYPE)
 public class QuoteController {
     @Autowired
     private QuoteApplicationService applicationService;
@@ -28,8 +27,7 @@ public class QuoteController {
     @PostMapping("/home")
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Generate Home Policy Quote", notes = "This is for generating home policy quote")
-    public HttpEntity<PolicyQuote> generateHomePolicyQuote(@ApiParam(value = "Home Details", required = true)
-                                                           @RequestBody HomeDetailCommand homeDetail) {
+    public HttpEntity<PolicyQuote> generateHomePolicyQuote(@RequestBody HomeDetailCommand homeDetail) {
         PolicyQuote quotation = applicationService.generateQuote(homeDetail);
         return new HttpEntity<>(quotation);
     }
@@ -37,8 +35,7 @@ public class QuoteController {
     @PostMapping("/car")
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Generate Car Policy Quote", notes = "This is for generating car policy quote")
-    public HttpEntity<PolicyQuote> generateCarPolicyQuote(@ApiParam(value = "Car Details", required = true)
-                                                          @RequestBody CarDetailCommand carDetail) {
+    public HttpEntity<PolicyQuote> generateCarPolicyQuote(@RequestBody CarDetailCommand carDetail) {
         PolicyQuote quotation = applicationService.generateQuote(carDetail);
         return new HttpEntity<>(quotation);
     }

@@ -11,4 +11,5 @@ public class CarPolicyQuote extends PolicyQuote {
     private String model;
     private String parkingAddress;
     private String kilosEachYear;
+    private DriverDetail driverDetail;
 }
