@@ -1,10 +1,6 @@
 package com.ddd.tw.dddworkshop.user.model;
 
-import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-
 import java.util.UUID;
-
-import com.ddd.tw.dddworkshop.exception.PasswordInitException;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,9 +14,6 @@ public class User {
     private String policyNumber;
 
     public void initPassword(String password) {
-        if (isNotEmpty(this.password)) {
-            throw new PasswordInitException();
-        }
         this.password = password;
     }
 
