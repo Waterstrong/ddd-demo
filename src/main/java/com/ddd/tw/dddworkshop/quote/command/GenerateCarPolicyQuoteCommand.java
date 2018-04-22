@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarDetailCommand {
+public class GenerateCarPolicyQuoteCommand {
     private String yearOfMake;
     private String brand;
     private String model;

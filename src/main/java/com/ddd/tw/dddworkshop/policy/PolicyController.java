@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.ddd.tw.dddworkshop.policy.command.PolicyCommand;
+import com.ddd.tw.dddworkshop.policy.command.BuyPolicyCommand;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,8 +27,8 @@ public class PolicyController {
     @PostMapping
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Buy Policy", notes = "This is for buying policy")
-    public HttpEntity<String> buyPolicy(@Valid @RequestBody PolicyCommand homePolicy) {
-        String policyNumber = applicationService.buyPolicy(homePolicy);
+    public HttpEntity<String> buyPolicy(@Valid @RequestBody BuyPolicyCommand policyDetail) {
+        String policyNumber = applicationService.buyPolicy(policyDetail);
         return new HttpEntity<>(policyNumber);
     }
 }

@@ -7,9 +7,9 @@ import java.text.DecimalFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.ddd.tw.dddworkshop.exception.InvalidQuotationException;
-import com.ddd.tw.dddworkshop.quote.command.CarDetailCommand;
-import com.ddd.tw.dddworkshop.quote.command.HomeDetailCommand;
+import com.ddd.tw.dddworkshop.exception.InvalidQuoteCategoryException;
+import com.ddd.tw.dddworkshop.quote.command.GenerateCarPolicyQuoteCommand;
+import com.ddd.tw.dddworkshop.quote.command.GenerateHomePolicyQuoteCommand;
 import com.ddd.tw.dddworkshop.quote.mapper.CarPolicyQuoteMapper;
 import com.ddd.tw.dddworkshop.quote.mapper.HomePolicyQuoteMapper;
 import com.ddd.tw.dddworkshop.quote.model.CarPolicyQuote;
@@ -24,38 +24,38 @@ public class QuoteService {
     @Autowired
     private QuoteRateRepository quoteRateRepository;
 
-    public HomePolicyQuote generateHomePolicyQuote(HomeDetailCommand homeDetail) {
-        HomePolicyQuote homePolicyQuote = HomePolicyQuoteMapper.INSTANCE.mapToHomePolicyQuote(homeDetail);
+    public HomePolicyQuote generateHomePolicyQuote(GenerateHomePolicyQuoteCommand command) {
+        HomePolicyQuote homePolicyQuote = HomePolicyQuoteMapper.INSTANCE.mapToHomePolicyQuote(command);
 
-        homePolicyQuote.setPremium(calculateHomePolicyQuotePremium(homeDetail));
+        homePolicyQuote.setPremium(calculateHomePolicyQuotePremium(command));
 
         return homePolicyQuote;
     }
 
-    public CarPolicyQuote generateCarPolicyQuote(CarDetailCommand carDetail) {
-        CarPolicyQuote carPolicyQuote = CarPolicyQuoteMapper.INSTANCE.mapToCarPolicyQuote(carDetail);
+    public CarPolicyQuote generateCarPolicyQuote(GenerateCarPolicyQuoteCommand command) {
+        CarPolicyQuote carPolicyQuote = CarPolicyQuoteMapper.INSTANCE.mapToCarPolicyQuote(command);
 
-        carPolicyQuote.setPremium(calculateCarPolicyQuotePremium(carDetail));
+        carPolicyQuote.setPremium(calculateCarPolicyQuotePremium(command));
 
         return carPolicyQuote;
     }
 
-    private Double calculateHomePolicyQuotePremium(HomeDetailCommand homeDetail) {
-        Double constructionMaterialRate = retrieveQuoteRate(homeDetail.getConstructionMaterial());
-        Double buildingTypeRate = retrieveQuoteRate(homeDetail.getBuildingType());
-        Double bedroomsTypeRate = retrieveQuoteRate(homeDetail.getBedroomsType());
+    private Double calculateHomePolicyQuotePremium(GenerateHomePolicyQuoteCommand command) {
+        Double constructionMaterialRate = retrieveQuoteRate(command.getConstructionMaterial());
+        Double buildingTypeRate = retrieveQuoteRate(command.getBuildingType());
+        Double bedroomsTypeRate = retrieveQuoteRate(command.getBedroomsType());
 
         Double premium = multiplyBasePremiumByRates(constructionMaterialRate, buildingTypeRate, bedroomsTypeRate);
 
         return formatPremium(premium);
     }
 
-    private Double calculateCarPolicyQuotePremium(CarDetailCommand carDetail) {
-        String brandModel = format("%s %s", carDetail.getBrand(), carDetail.getModel());
-        Double yearOfMakeRate = retrieveQuoteRate(carDetail.getYearOfMake());
+    private Double calculateCarPolicyQuotePremium(GenerateCarPolicyQuoteCommand command) {
+        String brandModel = format("%s %s", command.getBrand(), command.getModel());
+        Double yearOfMakeRate = retrieveQuoteRate(command.getYearOfMake());
         Double brandModelRate = quoteRateRepository.getRate(brandModel);
-        Double parkingAddressRate = retrieveQuoteRate(carDetail.getParkingAddress());
-        Double kilosEachYearRate = retrieveQuoteRate(carDetail.getKilosEachYear());
+        Double parkingAddressRate = retrieveQuoteRate(command.getParkingAddress());
+        Double kilosEachYearRate = retrieveQuoteRate(command.getKilosEachYear());
 
         Double premium = multiplyBasePremiumByRates(yearOfMakeRate, brandModelRate, parkingAddressRate, kilosEachYearRate);
 
@@ -65,7 +65,7 @@ public class QuoteService {
     private Double retrieveQuoteRate(String category) {
         Double rate = quoteRateRepository.getRate(category);
         if (rate == null) {
-            throw new InvalidQuotationException(category);
+            throw new InvalidQuoteCategoryException(category);
         }
         return rate;
     }

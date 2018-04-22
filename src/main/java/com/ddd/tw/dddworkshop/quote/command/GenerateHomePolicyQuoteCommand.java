@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class HomeDetailCommand {
+public class GenerateHomePolicyQuoteCommand {
     private String constructionMaterial;
     private String buildingType;
     private String bedroomsType;

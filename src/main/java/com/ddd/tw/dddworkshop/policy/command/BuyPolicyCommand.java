@@ -14,7 +14,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PolicyCommand {
+public class BuyPolicyCommand {
     @NotBlank
     private String policyStartDate;
     @NotBlank

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.ddd.tw.dddworkshop.quote.command.CarDetailCommand;
-import com.ddd.tw.dddworkshop.quote.command.HomeDetailCommand;
+import com.ddd.tw.dddworkshop.quote.command.GenerateCarPolicyQuoteCommand;
+import com.ddd.tw.dddworkshop.quote.command.GenerateHomePolicyQuoteCommand;
 import com.ddd.tw.dddworkshop.quote.model.PolicyQuote;
 
 import io.swagger.annotations.Api;
@@ -27,7 +27,7 @@ public class QuoteController {
     @PostMapping("/home")
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Generate Home Policy Quote", notes = "This is for generating home policy quote")
-    public HttpEntity<PolicyQuote> generateHomePolicyQuote(@RequestBody HomeDetailCommand homeDetail) {
+    public HttpEntity<PolicyQuote> generateHomePolicyQuote(@RequestBody GenerateHomePolicyQuoteCommand homeDetail) {
         PolicyQuote quotation = applicationService.generateQuote(homeDetail);
         return new HttpEntity<>(quotation);
     }
@@ -35,7 +35,7 @@ public class QuoteController {
     @PostMapping("/car")
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Generate Car Policy Quote", notes = "This is for generating car policy quote")
-    public HttpEntity<PolicyQuote> generateCarPolicyQuote(@RequestBody CarDetailCommand carDetail) {
+    public HttpEntity<PolicyQuote> generateCarPolicyQuote(@RequestBody GenerateCarPolicyQuoteCommand carDetail) {
         PolicyQuote quotation = applicationService.generateQuote(carDetail);
         return new HttpEntity<>(quotation);
     }
