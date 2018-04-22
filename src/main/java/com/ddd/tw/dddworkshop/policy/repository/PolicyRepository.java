@@ -14,7 +14,14 @@ public class PolicyRepository {
         policyMap.put(policy.getPolicyNumber(), policy);
     }
 
-    public Policy byId(String policyNumber) {
+    public Policy byPolicyNumber(String policyNumber) {
         return policyMap.get(policyNumber);
+    }
+
+    public Policy byQuoteId(String quoteId) {
+        return policyMap.values().stream()
+                .filter(policy -> quoteId.equals(policy.getQuoteId()))
+                .findFirst()
+                .orElse(null);
     }
 }
