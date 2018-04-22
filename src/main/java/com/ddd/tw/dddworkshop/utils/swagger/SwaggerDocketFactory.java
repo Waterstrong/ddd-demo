@@ -1,4 +1,4 @@
-package com.ddd.tw.dddworkshop.utils;
+package com.ddd.tw.dddworkshop.utils.swagger;
 
 import static com.google.common.collect.Sets.newHashSet;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;

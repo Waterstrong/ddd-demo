@@ -5,7 +5,7 @@ import static org.apache.logging.log4j.util.Strings.EMPTY;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.ddd.tw.dddworkshop.utils.SwaggerDocketFactory;
+import com.ddd.tw.dddworkshop.utils.swagger.SwaggerDocketFactory;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.service.ApiInfo;
@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfiguration {
-    private static final String CONTROLLER_PACKAGE = "com.ddd.tw.dddworkshop.webapi";
+    private static final String CONTROLLER_PACKAGE = "com.ddd.tw.dddworkshop";
 
     @Value("${info.version}")
     private String version;
