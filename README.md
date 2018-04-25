@@ -1,4 +1,4 @@
-# ddd-demo [![Build Status](https://travis-ci.org/APIGuild/ddd-demo.svg?branch=master)](https://travis-ci.org/APIGuild/ddd-demo)
+# ddd-demo [![Build Status](https://travis-ci.org/Waterstrong/ddd-demo.svg?branch=master)](https://travis-ci.org/Waterstrong/ddd-demo)
 Domain Driven Design Demo
 
 ### Generate IDEA
