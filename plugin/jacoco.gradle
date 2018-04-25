@@ -1,5 +1,13 @@
 apply plugin: 'jacoco'
 
+def excludeFiles = [
+        '**/Application*',
+        '**/configuration/**',
+        '**/exception/**',
+        '**/utils/**',
+        '**/repository/**'
+]
+
 jacocoTestReport {
     group = "Reporting"
     description = "Generate Jacoco coverage reports after running tests."
@@ -10,32 +18,31 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                    '**/*Application',
-                    '**/configuration/**',
-                    '**/exception/**',
-                    '**/utils/**',
-                    '**/repository/**'
-            ])
+            fileTree(dir: it, exclude: excludeFiles)
         })
     }
 }
 
 jacocoTestCoverageVerification {
     violationRules {
+        afterEvaluate {
+            classDirectories = files(classDirectories.files.collect {
+                fileTree(dir: it, exclude: excludeFiles)
+            })
+        }
         rule {
-            element "BUNDLE"
+            element "CLASS"
 
             limit {
                 counter = 'LINE'
                 value = 'COVEREDRATIO'
-                minimum = 0.0
+                minimum = 0.1
             }
 
             limit {
                 counter = 'BRANCH'
                 value = 'COVEREDRATIO'
-                minimum = 0.0
+                minimum = 0.1
             }
         }
     }
