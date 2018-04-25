@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.water.demo.ddd.domain.policy.model.Policy;
 import com.water.demo.ddd.domain.policy.repository.PolicyRepository;
 import com.water.demo.ddd.domain.user.command.RegisterCommand;
-import com.water.demo.ddd.domain.user.mapper.UserMapper;
 import com.water.demo.ddd.domain.user.model.User;
 import com.water.demo.ddd.domain.user.repository.UserRepository;
 import com.water.demo.ddd.exception.BadRequestException;
@@ -33,7 +32,7 @@ public class UserFactory {
     public User createUser(RegisterCommand command) {
         checkRegisterCondition(command);
 
-        User user = UserMapper.INSTANCE.mapToUser(command);
+        User user = new User(command.getEmail(), command.getPolicyNumber());
 
         emailService.sendEmail(user.getUuid());
 

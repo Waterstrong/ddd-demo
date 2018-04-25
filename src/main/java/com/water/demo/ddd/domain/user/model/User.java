@@ -13,6 +13,11 @@ public class User {
     private String password;
     private String policyNumber;
 
+    public User(String email, String policyNumber) {
+        this.email = email;
+        this.policyNumber = policyNumber;
+    }
+
     public void initPassword(String password) {
         this.password = password;
     }
