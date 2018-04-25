@@ -1,16 +1,29 @@
-# ddd-workshop [![Build Status](https://travis-ci.org/APIGuild/ddd-workshop.svg?branch=master)](https://travis-ci.org/APIGuild/ddd-workshop)
-Domain Driven Design Workshop
+# ddd-demo [![Build Status](https://travis-ci.org/APIGuild/ddd-demo.svg?branch=master)](https://travis-ci.org/APIGuild/ddd-demo)
+Domain Driven Design Demo
 
-### Install Plugins
-+ Lombok
-+ MapStruct
+### Generate IDEA
+```
+./gradlew cleanIdea idea
+```
 
-### Start continuous build and run
+### Build application
+```
+./gradlew clean build
+```
+
+### Run application
+```
+./gradlew bootRun
+```
+
+### Start continuous build
 ```
 ./gradlew build --continuous
-
-./gradle bootRun
 ```
 
 ### Swagger UI
 [http://localhost:8081/api/swagger-ui.html](http://localhost:8081/api/swagger-ui.html)
+
+### Install IntelliJ IDEA Plugins
++ Lombok
++ MapStruct

@@ -14,7 +14,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfiguration {
-    private static final String CONTROLLER_PACKAGE = "com.ddd.tw.dddworkshop";
+    private static final String CONTROLLER_PACKAGE = "com.water.demo.ddd";
 
     @Value("${info.version}")
     private String version;
