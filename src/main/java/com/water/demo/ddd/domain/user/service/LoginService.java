@@ -20,14 +20,14 @@ public class LoginService {
 
     public void login(String email, String password) {
         User user = ofNullable(userRepository.byEmail(email))
-                .orElseThrow(() -> newUserNotFoundException(email));
+                .orElseThrow(() -> userNotFoundException(email));
 
         if (!user.matchPassword(password)) {
             throw new UnauthorizedException(LOGIN_FAILED_MESSAGE);
         }
     }
 
-    private ResourceNotFoundException newUserNotFoundException(String email) {
+    private ResourceNotFoundException userNotFoundException(String email) {
         return new ResourceNotFoundException(format(USER_NOT_FOUND_MESSAGE, email));
     }
 }

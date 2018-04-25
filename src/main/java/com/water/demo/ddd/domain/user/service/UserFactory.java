@@ -45,7 +45,7 @@ public class UserFactory {
         String email = command.getEmail();
 
         Policy policy = ofNullable(policyRepository.byPolicyNumber(policyNumber))
-                .orElseThrow(() -> newPolicyNotFoundException(policyNumber));
+                .orElseThrow(() -> policyNotFoundException(policyNumber));
 
         if (!email.equals(policy.getHolderDetail().getEmail())) {
             throw new BadRequestException(format(INCORRECT_EMAIL_MESSAGE, email));
@@ -56,7 +56,7 @@ public class UserFactory {
         }
     }
 
-    private ResourceNotFoundException newPolicyNotFoundException(String policyNumber) {
+    private ResourceNotFoundException policyNotFoundException(String policyNumber) {
         return new ResourceNotFoundException(format(POLICY_NOT_FOUND_MESSAGE, policyNumber));
     }
 }
