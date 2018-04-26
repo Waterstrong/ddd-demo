@@ -25,9 +25,10 @@ apply from: "plugin/checkstyle.gradle"
 apply from: "plugin/jacoco.gradle"
 apply from: "plugin/apiTest.gradle"
 
-group = 'com.ddd.tw'
+group = 'com.water.demo'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+idea.project.vcs = 'Git'
 
 repositories {
     mavenCentral()
@@ -51,7 +52,6 @@ dependencies {
     runtime('com.h2database:h2')
     compileOnly('org.projectlombok:lombok:1.16.20')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('org.springframework.security:spring-security-test')
     apt 'org.mapstruct:mapstruct-processor:1.2.0.Final'
     apt "org.projectlombok:lombok:1.16.20"
 }

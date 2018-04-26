@@ -12,6 +12,7 @@ import com.water.demo.ddd.domain.user.command.RegisterCommand;
 import com.water.demo.ddd.domain.user.model.User;
 import com.water.demo.ddd.domain.user.repository.UserRepository;
 import com.water.demo.ddd.domain.user.service.LoginService;
+import com.water.demo.ddd.domain.user.service.RegisterService;
 import com.water.demo.ddd.domain.user.service.UserFactory;
 import com.water.demo.ddd.exception.ResourceNotFoundException;
 
@@ -26,6 +27,9 @@ public class UserApplicationService {
 
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private RegisterService registerService;
 
     public void register(RegisterCommand command) {
         User user = userFactory.createUser(command);
@@ -44,6 +48,23 @@ public class UserApplicationService {
                 .orElseThrow(() -> new ResourceNotFoundException(format("User <%s> not found!", uuid)));
 
         user.initPassword(command.getPassword());
+
+        userRepository.save(user);
+    }
+
+    public String register(String email, String policyNumber) {
+        User user = registerService.register(email, policyNumber);
+
+        userRepository.save(user);
+
+        return user.getUuid();
+    }
+
+    public void initPassword(String uuid, String password) {
+        User user = ofNullable(userRepository.byUuid(uuid))
+                .orElseThrow(() -> new ResourceNotFoundException(format("User <%s> not found!", uuid)));
+
+        user.initPassword(password);
 
         userRepository.save(user);
     }

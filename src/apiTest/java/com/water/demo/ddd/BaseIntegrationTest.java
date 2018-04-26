@@ -4,7 +4,6 @@ import static com.water.demo.ddd.utils.constant.Constants.CONTENT_TYPE;
 import static java.lang.ClassLoader.getSystemClassLoader;
 import static java.lang.String.format;
 import static java.nio.charset.Charset.defaultCharset;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 import java.io.IOException;
@@ -35,7 +34,7 @@ public abstract class BaseIntegrationTest {
 
     @Before
     public void setUp() {
-        mockMvc = webAppContextSetup(context).apply(springSecurity()).build();
+        mockMvc = webAppContextSetup(context).build();
     }
 
     protected ResultActions performRequest(MockHttpServletRequestBuilder builder) throws Exception {
