@@ -8,8 +8,8 @@ ext {
 
 checkstyle {
     configProperties.checkstyleConfigDir = checkstyleConfigDir
+    configFile = checkstyleTestFile
     checkstyleMain.configFile = checkstyleMainFile
-    checkstyleTest.configFile = checkstyleTestFile
 
     toolVersion = 8.2
 }
