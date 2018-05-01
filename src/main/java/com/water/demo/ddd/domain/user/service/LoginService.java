@@ -19,15 +19,16 @@ public class LoginService {
     private UserRepository userRepository;
 
     public void login(String email, String password) {
-        User user = ofNullable(userRepository.byEmail(email))
-                .orElseThrow(() -> userNotFoundException(email));
+        User user = retrieveUser(email);
 
         if (!user.matchPassword(password)) {
             throw new UnauthorizedException(LOGIN_FAILED_MESSAGE);
         }
     }
 
-    private ResourceNotFoundException userNotFoundException(String email) {
-        return new ResourceNotFoundException(format(USER_NOT_FOUND_MESSAGE, email));
+    private User retrieveUser(String email) {
+        return ofNullable(userRepository.byEmail(email))
+                .orElseThrow(() -> new ResourceNotFoundException(format(USER_NOT_FOUND_MESSAGE, email)));
     }
+
 }
