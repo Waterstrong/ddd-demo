@@ -22,7 +22,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/user", consumes = Constants.CONTENT_TYPE, produces = Constants.CONTENT_TYPE)
+@RequestMapping(value = "/user", consumes = Constants.CONTENT_TYPE)
 @Api(tags = "User", description = "User Resource", consumes = Constants.CONTENT_TYPE, produces = Constants.CONTENT_TYPE)
 public class UserController {
 
@@ -32,8 +32,8 @@ public class UserController {
     @PostMapping
     @ResponseStatus(CREATED)
     @ApiOperation(value = "Register User", notes = "This is for user register")
-    public void register(@Valid @RequestBody RegisterCommand registerField) {
-        applicationService.register(registerField);
+    public String register(@Valid @RequestBody RegisterCommand registerField) {
+        return applicationService.register(registerField.getEmail(), registerField.getPolicyNumber());
     }
 
     @PostMapping("/login")
@@ -47,6 +47,6 @@ public class UserController {
     @ResponseStatus(OK)
     @ApiOperation(value = "Init Password", notes = "This is for password initial")
     public void initPassword(@Valid @RequestBody InitPasswordCommand initPasswordField) {
-        applicationService.initPassword(initPasswordField);
+        applicationService.initPassword(initPasswordField.getUuid(), initPasswordField.getPassword());
     }
 }
