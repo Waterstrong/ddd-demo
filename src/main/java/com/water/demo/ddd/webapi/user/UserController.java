@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/user", consumes = Constants.CONTENT_TYPE)
-@Api(tags = "User", description = "User Resource", consumes = Constants.CONTENT_TYPE, produces = Constants.CONTENT_TYPE)
+@Api(tags = "User", description = "User Resource", consumes = Constants.CONTENT_TYPE)
 public class UserController {
 
     @Autowired

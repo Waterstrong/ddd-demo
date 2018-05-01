@@ -23,19 +23,12 @@ public class RegisterService {
     private PolicyRepository policyRepository;
 
     @Autowired
-    private EmailService emailService;
-
-    @Autowired
     private UserRepository userRepository;
 
     public User register(String email, String policyNumber) {
         checkRegisterCondition(email, policyNumber);
 
-        User user = new User(email, policyNumber);
-
-        emailService.sendEmail(user.getUuid());
-
-        return user;
+        return new User(email);
     }
 
     private void checkRegisterCondition(String email, String policyNumber) {

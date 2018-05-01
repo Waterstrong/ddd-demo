@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import com.water.demo.ddd.domain.user.model.User;
 import com.water.demo.ddd.domain.user.repository.UserRepository;
+import com.water.demo.ddd.domain.user.service.EmailService;
 import com.water.demo.ddd.domain.user.service.RegisterService;
 import com.water.demo.ddd.exception.ResourceNotFoundException;
 
@@ -28,17 +29,21 @@ public class UserApplicationServiceTest {
     @Mock
     private UserRepository userRepository;
 
+    @Mock
+    private EmailService emailService;
+
     @Test
     public void shouldApplicationServiceDelegateToRegisterServiceAndUserRepositoryToRegisterUser() {
         String policyNumber = "123456789";
         String email = "sqlin@gmail.com";
-        User user = new User(email, policyNumber);
+        User user = new User(email);
         when(registerService.register(email, policyNumber)).thenReturn(user);
 
         String uuid = applicationService.register(email, policyNumber);
 
         verify(registerService).register(email, policyNumber);
         verify(userRepository).save(user);
+        verify(emailService).sendEmail(user.getUuid());
         assertThat(uuid, is(user.getUuid()));
     }
 
@@ -46,7 +51,7 @@ public class UserApplicationServiceTest {
     public void shouldInitUserPasswordGivenTheUuidAndPasswordAreCorrect() {
         String uuid = "U123456";
         String password = "*******";
-        User user = new User("", "");
+        User user = new User("");
         when(userRepository.byUuid(uuid)).thenReturn(user);
 
         applicationService.initPassword(uuid, password);

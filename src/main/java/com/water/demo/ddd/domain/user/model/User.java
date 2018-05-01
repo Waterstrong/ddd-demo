@@ -11,11 +11,9 @@ public class User {
     private String uuid = UUID.randomUUID().toString();
     private String email;
     private String password;
-    private String policyNumber;
 
-    public User(String email, String policyNumber) {
+    public User(String email) {
         this.email = email;
-        this.policyNumber = policyNumber;
     }
 
     public void initPassword(String password) {

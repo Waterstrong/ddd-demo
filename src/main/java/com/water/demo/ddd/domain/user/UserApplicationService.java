@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.water.demo.ddd.domain.user.command.LoginCommand;
 import com.water.demo.ddd.domain.user.model.User;
 import com.water.demo.ddd.domain.user.repository.UserRepository;
+import com.water.demo.ddd.domain.user.service.EmailService;
 import com.water.demo.ddd.domain.user.service.RegisterService;
 import com.water.demo.ddd.exception.ResourceNotFoundException;
 
@@ -23,11 +24,15 @@ public class UserApplicationService {
     @Autowired
     private RegisterService registerService;
 
+    @Autowired
+    private EmailService emailService;
 
     public String register(String email, String policyNumber) {
         User user = registerService.register(email, policyNumber);
 
         userRepository.save(user);
+
+        emailService.sendEmail(user.getUuid());
 
         return user.getUuid();
     }
