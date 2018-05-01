@@ -40,7 +40,7 @@ public class UserController {
     @ResponseStatus(OK)
     @ApiOperation(value = "User Login", notes = "This is for user login")
     public void login(@Valid @RequestBody LoginCommand loginField) {
-        applicationService.login(loginField);
+        applicationService.login(loginField.getEmail(), loginField.getPassword());
     }
 
     @PutMapping("/password")
