@@ -55,7 +55,7 @@ public class QuoteService {
     private Double calculateCarPolicyQuotePremium(GenerateCarPolicyQuoteCommand command) {
         String brandModel = format(BRAND_MODEL_FORMAT, command.getBrand(), command.getModel());
         Double yearOfMakeRate = retrieveQuoteRate(command.getYearOfMake());
-        Double brandModelRate = quoteRateRepository.getRate(brandModel);
+        Double brandModelRate = retrieveQuoteRate(brandModel);
         Double parkingAddressRate = retrieveQuoteRate(command.getParkingAddress());
         Double kilosEachYearRate = retrieveQuoteRate(command.getKilosEachYear());
 
