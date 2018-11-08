@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Unit Test') {
+    stage('Build') {
       parallel {
         stage('Unit Test') {
           steps {
@@ -21,6 +21,11 @@ pipeline {
         stage('Sonar') {
           steps {
             echo 'Sonar'
+          }
+        }
+        stage('Unit Test') {
+          steps {
+            echo 'Unit Test'
           }
         }
       }
